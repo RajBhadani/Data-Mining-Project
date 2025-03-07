@@ -81,3 +81,4 @@ The project successfully demonstrated the feasibility of using machine learning 
 * **Deployment:** Consider deploying the best performing model as a web application or API for practical use.
 
 This report provides a concise overview of the data mining project. The Colab notebook contains the detailed implementation and results.
+**Colab Notebook Link:** [https://colab.research.google.com/drive/1cA1xhaLfCnnaDX-Odreo4YifeeMW6fuP#scrollTo=uztRqKckG9R9](https://colab.research.google.com/drive/1cA1xhaLfCnnaDX-Odreo4YifeeMW6fuP#scrollTo=uztRqKckG9R9)
