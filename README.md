@@ -1,4 +1,4 @@
-## Early Stage Diabetes Risk Prediction
+# Early Stage Diabetes Risk Prediction
 
 #This repository contains a data science project focused on predicting the early stage risk of diabetes using a provided dataset. The project utilizes a Decision Tree Classifier model to analyze the data and make predictions.
 
