@@ -1,84 +1,93 @@
-# Data Mining Project Report: Heart Disease Prediction
+## Early Stage Diabetes Risk Prediction
 
-## 1. Introduction
+#This repository contains a data science project focused on predicting the early stage risk of diabetes using a provided dataset. The project utilizes a Decision Tree Classifier model to analyze the data and make predictions.
 
-This report documents a data mining project focused on predicting the presence of heart disease in patients. The project utilizes a dataset containing various medical attributes to train and evaluate machine learning models. The goal is to develop a predictive model that can accurately identify individuals at risk of heart disease, enabling early intervention and preventative measures.
+## Table of Contents
 
-## 2. Dataset Description
+- [Project Overview](#project-overview)
+- [Dataset](#dataset)
+- [Data Preprocessing](#data-preprocessing)
+- [Model Training](#model-training)
+- [Prediction and Evaluation](#prediction-and-evaluation)
+- [Results](#results)
+- [Dependencies](#dependencies)
+- [How to Run](#how-to-run)
+- [Contributing](#contributing)
+- [License](#license)
 
-The dataset used in this project is the "Heart Disease UCI" dataset, obtained from the UCI Machine Learning Repository. It contains the following attributes:
+## Project Overview
 
-* **age:** Age in years.
-* **sex:** (1 = male; 0 = female).
-* **cp:** Chest pain type (4 values).
-* **trestbps:** Resting blood pressure.
-* **chol:** Serum cholesterol in mg/dl.
-* **fbs:** Fasting blood sugar > 120 mg/dl (1 = true; 0 = false).
-* **restecg:** Resting electrocardiographic results (values 0, 1, 2).
-* **thalach:** Maximum heart rate achieved.
-* **exang:** Exercise induced angina (1 = yes; 0 = no).
-* **oldpeak:** ST depression induced by exercise relative to rest.
-* **slope:** The slope of the peak exercise ST segment.
-* **ca:** Number of major vessels (0-3) colored by fluoroscopy.
-* **thal:** 3 = normal; 6 = fixed defect; 7 = reversible defect.
-* **target:** 0 = no disease, 1 = disease.
+The goal of this project is to build a classification model that can identify individuals at early risk of diabetes based on various health attributes. The project workflow includes:
 
-## 3. Data Preprocessing
+1. Loading and exploring the dataset.
+2. Preprocessing the data, including handling missing values and encoding categorical features.
+3. Splitting the data into training and testing sets.
+4. Training a Decision Tree Classifier model using both Gini impurity and Entropy as criteria.
+5. Making predictions on the test set.
+6. Evaluating the model's performance using metrics such as Accuracy, Precision, and F1 Score.
+7. Visualizing the results to compare the performance of models trained with different criteria.
 
-The data preprocessing steps performed in the Colab notebook include:
+## Dataset
 
-* **Importing Libraries:** Necessary libraries such as Pandas, NumPy, Scikit-learn, and Matplotlib were imported.
-* **Loading the Dataset:** The dataset was loaded into a Pandas DataFrame.
-* **Checking for Missing Values:** The notebook confirmed that there were no missing values in the dataset.
-* **Data Exploration:** Basic descriptive statistics were generated to understand the distribution of the features.
-* **Feature Scaling:** `StandardScaler` was used to scale the numerical features, ensuring that all features contribute equally to the model.
-* **One-Hot Encoding:** The categorical features (cp, restecg, slope, thal) were converted into numerical features using one-hot encoding.
-* **Splitting the Data:** The dataset was split into training and testing sets, with 80% of the data used for training and 20% for testing.
+The dataset used in this project is `diabetes_data_upload.csv`. It contains various features related to patient health and a target variable indicating whether the individual is at early risk of diabetes.
 
-## 4. Model Selection and Training
+**Note:** Please ensure you have the `diabetes_data_upload.csv` file in the same directory as the notebook or provide the correct path to the file.
 
-The following machine learning models were trained and evaluated:
+## Data Preprocessing
 
-* **Logistic Regression:** A linear model for binary classification.
-* **K-Nearest Neighbors (KNN):** A non-parametric method used for classification and regression.
-* **Support Vector Machine (SVM):** A supervised learning model with associated learning algorithms that analyze data used for classification and regression analysis.
-* **Decision Tree:** A decision support tool that uses a tree-like graph or model of decisions and their possible consequences.
-* **Random Forest:** An ensemble learning method for classification, regression and other tasks that operates by constructing a multitude of decision trees at training time.
-* **Gradient Boosting Machine (GBM):** A machine learning technique used for regression and classification tasks, which produces a prediction model in the form of an ensemble of weak prediction models, typically decision trees.
+The data preprocessing steps include:
 
-## 5. Model Evaluation
+- Checking for missing values (although the code shows no missing values in this dataset).
+- Separating features (`X`) and the target variable (`y`).
+- Applying one-hot encoding to the categorical features to convert them into a numerical format suitable for the model. The `drop_first=True` option is used to avoid multicollinearity.
 
-The performance of each model was evaluated using the following metrics:
+## Model Training
 
-* **Accuracy:** The proportion of correctly classified instances.
-* **Precision:** The ratio of correctly predicted positive observations to the total predicted positives.
-* **Recall:** The ratio of correctly predicted positive observations to all observations in the actual class.
-* **F1-Score:** The harmonic mean of precision and recall.
-* **Confusion Matrix:** A table that visualizes the performance of a classification model.
+A Decision Tree Classifier model is trained in this project. Two models are trained with different criteria for splitting nodes:
 
-The notebook displayed the classification report and confusion matrix for each model, showing the precision, recall, F1-score, and support for each class.
+- **Model 1:** Trained using the Gini impurity criterion.
+- **Model 2:** Trained using the Entropy criterion.
 
-## 6. Results and Analysis
+The data is split into training and testing sets using `train_test_split`.
 
-Based on the evaluation metrics, the following observations were made:
+Visualizations of the trained decision trees (both Gini and Entropy based) are generated and saved as PNG files (`diabetes_gini.png` and `diabetes_entropy.png`). A text representation of the Gini-based tree is also printed and saved to a file (`decision_tree.txt`).
 
-* The Random Forest and Gradient Boosting Machine (GBM) models achieved the highest accuracy scores.
-* All models performed reasonably well, indicating that the features in the dataset are informative for predicting heart disease.
-* The confusion matrices show the amount of true positives, true negatives, false positives, and false negatives, providing insight into the types of errors made by each model.
-* The one hot encoding significantly increases the amount of columns in the dataframe.
+## Prediction and Evaluation
 
-## 7. Conclusion
+The trained models are used to make predictions on the test set. The performance of each model is evaluated using the following metrics:
 
-The project successfully demonstrated the feasibility of using machine learning models to predict heart disease. The Random Forest and Gradient Boosting Machine models proved to be the most effective, achieving high accuracy scores. These models can be valuable tools for healthcare professionals in identifying individuals at risk of heart disease.
+- **Accuracy:** The proportion of correctly classified instances.
+- **Precision:** The ability of the model to correctly identify positive instances among all instances predicted as positive.
+- **F1 Score:** The harmonic mean of Precision and Recall, providing a balance between the two.
 
-## 8. Future Work
+The evaluation metrics are calculated and printed for both the Gini-based and Entropy-based models.
 
-* **Hyperparameter Tuning:** Fine-tune the hyperparameters of the models to further improve their performance.
-* **Feature Engineering:** Explore additional feature engineering techniques to create more informative features.
-* **More Advanced Models:** Test more advanced models, such as neural networks, to potentially achieve better results.
-* **Cross-Validation:** Implement cross-validation techniques to ensure the robustness of the models.
-* **Expand Dataset:** attempt to add more data to the set, to see if the model can be improved further.
-* **Deployment:** Consider deploying the best performing model as a web application or API for practical use.
+## Results
 
-This report provides a concise overview of the data mining project. The Colab notebook contains the detailed implementation and results.
+A bar plot is generated to visually compare the Accuracy, Precision, and F1 Score of the Gini-based and Entropy-based models. This plot helps in understanding which criterion results in better performance for this specific dataset.
+
+## Dependencies
+
+The project requires the following Python libraries:
+
+- `numpy`
+- `pandas`
+- `matplotlib`
+- `seaborn`
+- `sklearn` (scikit-learn)
+
+You can install these dependencies using pip:
+
+## How to Run
+
+1. Clone this repository to your local machine.
+2. Ensure you have the `diabetes_data_upload.csv` file in the correct location.
+3. Install the required dependencies.
+4. Open the provided Jupyter Notebook (or Google Colab notebook).
+5. Run the cells sequentially to execute the data preprocessing, model training, prediction, and evaluation steps.
+
+## Contributing
+
+If you would like to contribute to this project, please feel free to fork the repository and submit a pull request.
+
 **Colab Notebook Link:** [https://colab.research.google.com/drive/1cA1xhaLfCnnaDX-Odreo4YifeeMW6fuP#scrollTo=uztRqKckG9R9](https://colab.research.google.com/drive/1cA1xhaLfCnnaDX-Odreo4YifeeMW6fuP#scrollTo=uztRqKckG9R9)
