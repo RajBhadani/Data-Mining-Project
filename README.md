@@ -89,5 +89,3 @@ You can install these dependencies using pip:
 ## Contributing
 
 If you would like to contribute to this project, please feel free to fork the repository and submit a pull request.
-
-**Colab Notebook Link:** [https://colab.research.google.com/drive/1cA1xhaLfCnnaDX-Odreo4YifeeMW6fuP#scrollTo=uztRqKckG9R9](https://colab.research.google.com/drive/1cA1xhaLfCnnaDX-Odreo4YifeeMW6fuP#scrollTo=uztRqKckG9R9)
